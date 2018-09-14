@@ -14,7 +14,7 @@ const sendErrorsFromDB = (res, dbErrors) => {
 }
 
 const login = (req, res, next) => {
-    const email = req.body.email || ''
+    const email = req.body.email ? req.body.email.toLowerCase() : ''
     const password = req.body.password || ''
 
     User.findOne({email}, (err, user) => {
@@ -42,7 +42,7 @@ const validateToken = (req, res, next) => {
 
 const signup = (req, res, next) => {
     const name = req.body.name || ''
-    const email = req.body.email || ''
+    const email = req.body.email ? req.body.email.toLowerCase() : ''
     const password = req.body.password || ''
     const confirmPassword = req.body.confirm_password || ''
 
